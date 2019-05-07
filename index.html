@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="fr" ng-app="myApp">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Exercice3</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+  <script src ="http://code.angularjs.org/1.7.8/angular-route.js"></script>
+</head>
+
+<body ng-controller="Ctrl">
+  <h1 class="bg-warning text-center">MON FORMULAIRE</h1>
+  <form class="bg-primary text-center" name="myForm" >
+    <div class="form-group text-center">
+
+      <div class="col-md-4 mb-3 bg-primary">
+        <label for="valid">votre nom :</label>
+        <input type="text" name="Name" required ng-minlength="2" ng-maxlength="20" ng-model="Name" class="form-control" ng-pattern="nameregex" id="" placeholder="First name" value="" required />
+        <div ng-show="myForm.Name.$valid">
+          <p class="text-success">Maintenant merci de remplir le champ mail</p>
+        </div>
+        <div ng-show="myForm.Name.$error.pattern">
+          <p class="text-danger">renseigner un nom valide</p>
+        </div>
+      </div>
+
+
+      <div class="valid1 col-md-4 mb-3 bg-primary">
+        <label for="valid1">votre email :</label>
+        <input type="email" name="Email" ng-model="Email" class="form-control" ng-pattern="mailregex" id="Email" placeholder="Entrer votre email" required />
+        <div ng-show="myForm.Email.$valid">
+          <p class="text-success">Maintenant veuillez indiquer le sujet de votre message</p>
+        </div>
+        <div ng-show="myForm.Email.$error.pattern">
+          <p class="text-danger">renseigner une adresse mail valide</p>
+        </div>
+      </div>
+      <div class="valid2 col-md-4 mb-4 bg-primary">
+        <label for="valid2">Titre de votre commentaire</label>
+        <input type="text" name="Sujet" required ng-minlength="15" ng-maxlength="30" ng-model="Sujet" class="form-control" ng-pattern="textregex" id="Sujet" placeholder="Titre de votre commentaire" required />
+        <div ng-show="myForm.Sujet.$valid">
+          <p class="text-success">Maintenant merci de remplir le champ commentaire</p>
+        </div>
+        <div ng-show="myForm.Sujet.$error.pattern">
+          <p class="text-danger">15 caractéres minimum sont nécessaire pour le titre du commentaire !</p>
+        </div>
+      </div>
+      <div class="valid3 col-md-4 mb-4 bg-primary">
+        <label for="valid3">votre commentaire :</label>
+        <textarea name="Commentary" required ng-minlength="3" ng-maxlength="200" ng-model="Commentary" class="form-control" ng-pattern="comregex" id="Commentary" rows="3" placeholder="Votre commentaire" required></textarea>
+        <div ng-show="myForm.Commentary.$valid">
+          <p class="text-success">valider votre commentaire pour afficher le compte-rendu</p>
+        </div>
+        <div ng-show="myForm.Commentary.$error.pattern">
+          <p class="text-danger">votre commentaire doit contenir entre 30 et 140 caractéres!</p>
+        </div>
+      </div>
+
+    </div >
+    <button class="btn btn-danger" ng-click="AfficherArray()" ng-disabled="myForm.$invalid" type="submit">soumettre</button>
+  </form>
+  <div>
+    <ol>
+    <li ng-repeat="Sujet in tableau">{{Sujet.Sujet}} - {{$index}}</li>
+  </ol>
+  <p>{{tableau[1].Name}}</p>
+  <p>{{tableau[1].email}}</p>
+  <p>{{tableau[1].Sujet}}</p>
+  <p>{{tableau[1].Commentary}}</p>
+</div>
+
+
+  <script type="text/javascript" src="script.js"></script>
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</html>
